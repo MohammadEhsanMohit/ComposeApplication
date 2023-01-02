@@ -30,7 +30,7 @@ fun ProfilePageNew() {
     Card(
         elevation = CardDefaults.cardElevation(),
         modifier = Modifier
-            .fillMaxSize()
+            .wrapContentHeight()
             .padding(
                 bottom = 100.dp, top = 100.dp,
                 end = 8.dp, start = 8.dp
