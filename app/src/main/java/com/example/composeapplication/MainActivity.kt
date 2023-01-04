@@ -16,6 +16,10 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.composeapplication.common.mainActivityConstraintSet
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 import com.example.composeapplication.view.*
+import com.example.composeapplication.view.recipe.RecipeCard
+import com.example.composeapplication.view.recipe.RecipeList
+import com.example.composeapplication.view.recipe.recipeList
+import com.example.composeapplication.view.recipe.sampleRecipe
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
