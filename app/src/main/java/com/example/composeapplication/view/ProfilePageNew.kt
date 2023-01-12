@@ -1,9 +1,7 @@
 package com.example.composeapplication.view
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -11,11 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -23,18 +17,22 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
+import com.example.composeapplication.ui.theme.Pink80
 import kotlinx.coroutines.launch
-import com.example.composeapplication.R
+
 @Composable
 fun ProfilePageNew() {
     Card(
         elevation = CardDefaults.cardElevation(),
         modifier = Modifier
-            .fillMaxSize()
             .padding(
-                bottom = 100.dp, top = 100.dp,
+                bottom = 10.dp, top = 10.dp,
                 end = 8.dp, start = 8.dp
             )
+            .layoutId("profileCard")
+            .wrapContentHeight()
+            .padding(8.dp)
+
     ) {
         BoxWithConstraints {
             val scope = rememberCoroutineScope()
@@ -55,7 +53,12 @@ fun ProfilePageNew() {
                     followingCount, followingText,
                     postCount, postText,
                     btnFollowUser, btnMessage) = createRefs()*/
-                Image(
+                ImageView(
+                    borderColor = Pink80,
+                    shape = RoundedCornerShape(50.dp),
+                    layoutId = "image"
+                )
+                /*Image(
                     painter = painterResource(id = R.drawable.profile_img),
                     contentDescription = "Test Profile",
                     modifier = Modifier
@@ -68,7 +71,7 @@ fun ProfilePageNew() {
                         )
                         .layoutId("image"),
                     contentScale = ContentScale.Crop
-                )
+                )*/
                 Text(
                     text = "Ehsan Mohit",
                     modifier = Modifier.layoutId("nameText")
