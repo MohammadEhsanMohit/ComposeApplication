@@ -28,14 +28,13 @@ import com.example.composeapplication.data.BottomNavigationItem
 import com.example.composeapplication.feature_note.presentation.add_edit_note.AddEditNoteScreen
 import com.example.composeapplication.feature_note.presentation.add_edit_note.AddEditNoteViewModel
 import com.example.composeapplication.feature_note.presentation.notes.NoteScreen
-import com.example.composeapplication.feature_note.presentation.util.Screen
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
+import com.example.composeapplication.utils.NotesNavLinkPARAM.NOTES_LIST_SCREEN_URL_PARAMETER
 import com.example.composeapplication.view.*
 import com.example.composeapplication.view.recipe.RecipeCard
 import com.example.composeapplication.view.recipe.RecipeList
 import com.example.composeapplication.view.recipe.recipeList
 import com.example.composeapplication.view.recipe.sampleRecipe
-import com.example.utils.NotesNavLinkPARAM.NOTES_LIST_SCREEN_URL_PARAMETER
 import org.koin.androidx.compose.getViewModel
 import org.koin.core.parameter.parametersOf
 import com.example.composeapplication.feature_note.presentation.util.Screen as noteRoute
@@ -48,6 +47,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
+
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,

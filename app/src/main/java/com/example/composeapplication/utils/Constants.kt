@@ -1,6 +1,6 @@
-package com.example.utils
+package com.example.composeapplication.utils
 
-import com.example.utils.FeatureRoutesNAME.NOTE_ADD_EDIT_SCREEN
+import com.example.composeapplication.utils.FeatureRoutesNAME.NOTE_ADD_EDIT_SCREEN
 
 object MainRoutes {
 
