@@ -6,4 +6,5 @@ sealed class BottomNavigationItem(var title: String, var icon: Int, var screen_r
 
     object Profile : BottomNavigationItem("Profile", R.drawable.icon_profile, "profile")
     object ProfileList : BottomNavigationItem("ProfileList", R.drawable.icon_list, "profileList")
+    object RecipeList : BottomNavigationItem("RecipeList", R.drawable.icon_list, "RecipeList")
 }
