@@ -1,16 +1,13 @@
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.VerticalAlignmentLine
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.composeapplication.data.BottomNavigationItem
@@ -22,9 +19,11 @@ fun BottomBar(navController: NavHostController) {
         BottomNavigationItem.ProfileList,
     )
 
-    BottomAppBar(modifier = Modifier
-        .wrapContentHeight()
-        .fillMaxWidth()) {
+    BottomAppBar(
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+    ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         screens.forEach { item ->
@@ -42,13 +41,23 @@ fun BottomBar(navController: NavHostController) {
                 },
                 alwaysShowLabel = true,
                 icon = {
-                    Icon(
-                        modifier= Modifier
-                            .width(32.dp)
-                            .padding(8.dp),
-                        tint=MaterialTheme.colorScheme.onBackground,
-                        imageVector = item.icon,
-                        contentDescription = item.title)
+                    Column(
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .padding(8.dp)
+                    ) {
+                        Icon(
+                            modifier = Modifier
+                                .width(32.dp)
+                                .padding(8.dp)
+                                .align(alignment = Alignment.CenterHorizontally),
+                            tint = MaterialTheme.colorScheme.onBackground,
+                            imageVector = item.icon,
+                            contentDescription = item.title
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(text = item.title, style = TextStyle(fontSize = 12.sp))
+                    }
                 }
             )
         }
