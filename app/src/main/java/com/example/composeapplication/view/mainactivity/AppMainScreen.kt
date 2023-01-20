@@ -83,7 +83,7 @@ fun ApplicationHomeScreen() {
                     onItemClick = {
                         scope.launch { drawerState.close() }
                         when (it.id) {
-                            "Home" -> navController.navigate(BottomNavigationItem.ProfileList.screen_route)
+                            "Home" -> navController.navigate(BottomNavigationItem.Note.screen_route)
                             "Setting" -> navController.navigate(BottomNavigationItem.RecipeList.screen_route)
                             "Note" -> navController.navigate(Screen.NotesScreen.route)
                             "Bottom" -> navController.navigate("BottomPage")
@@ -107,7 +107,7 @@ fun ApplicationHomeScreen() {
             NavHost(
                 modifier = Modifier.padding(top = padding.calculateTopPadding()),
                 navController = navController,
-                startDestination = BottomNavigationItem.ProfileList.screen_route
+                startDestination = BottomNavigationItem.Note.screen_route
             ) {
                 composable(route = Screen.NotesScreen.route) {
                     NoteScreen(navController = navController)
@@ -139,7 +139,7 @@ fun ApplicationHomeScreen() {
                 composable(BottomNavigationItem.Profile.screen_route) {
                     ProfilePage()
                 }
-                composable(BottomNavigationItem.ProfileList.screen_route) {
+                composable(BottomNavigationItem.Note.screen_route) {
                     ProfilePageNew()
                 }
                 composable(BottomNavigationItem.RecipeList.screen_route) {

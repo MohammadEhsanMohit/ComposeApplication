@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
+import com.example.composeapplication.view.MainActivityCustomView
 import com.example.composeapplication.view.mainactivity.ApplicationHomeScreen
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeApplicationTheme {
-                ApplicationHomeScreen()
+                MainActivityCustomView()
             }
         }
     }
