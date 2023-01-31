@@ -2,7 +2,7 @@ package com.example.composeapplication.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.composeapplication.feature_note.data.data_source.NoteDataBase
+import com.example.composeapplication.feature.note.data.data_source.NoteDataBase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -11,12 +11,12 @@ val dataBase = module {
     factory { provideNoteDao(get()) }
 }
 
-fun provideNoteDao(db: NoteDataBase) = db.noteDao
+fun provideNoteDao(db: com.example.composeapplication.feature.note.data.data_source.NoteDataBase) = db.noteDao
 
 fun provideNoteDataBase(androidApplication: Application) = Room.databaseBuilder(
     androidApplication,
-    NoteDataBase::class.java,
-    NoteDataBase.DATABASE_NAME
+    com.example.composeapplication.feature.note.data.data_source.NoteDataBase::class.java,
+    com.example.composeapplication.feature.note.data.data_source.NoteDataBase.DATABASE_NAME
 ).build()
 
 
