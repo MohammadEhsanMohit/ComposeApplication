@@ -39,20 +39,7 @@ fun MainActivityCustomView() {
         ) {
             ConstraintLayout(mainActivityConstraintSet(5.dp, sampleRecipe.id)) {
                 MainScreenView()
-               // RecipeCard(recipe = sampleRecipe, 16.dp)
             }
-        }
-    }
-}
-
-@Composable
-fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = BottomNavigationItem.Profile.screen_route) {
-        composable(BottomNavigationItem.Profile.screen_route) {
-            ProfilePage()
-        }
-        composable(BottomNavigationItem.Note.screen_route) {
-            ProfilePageNew()
         }
     }
 }
@@ -70,7 +57,7 @@ fun MainScreenView() {
             Modifier.padding(padding)
         ) {
             composable(BottomNavigationItem.Profile.screen_route) {
-                ProfilePage()
+                ProfilePageNew()
             }
             composable(BottomNavigationItem.Note.screen_route) {
                 NoteScreen(navController = navController)
