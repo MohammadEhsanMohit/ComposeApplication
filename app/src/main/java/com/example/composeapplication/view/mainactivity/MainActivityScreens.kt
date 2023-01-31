@@ -1,4 +1,4 @@
-package com.example.composeapplication.view
+package com.example.composeapplication.view.mainactivity
 
 import BottomBar
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -14,16 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composeapplication.common.mainActivityConstraintSet
 import com.example.composeapplication.data.BottomNavigationItem
-import com.example.composeapplication.feature_note.presentation.notes.NoteScreen
+import com.example.composeapplication.feature.note.presentation.notes.NoteScreen
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
-import com.example.composeapplication.view.mainactivity.ApplicationHomeScreen
-import com.example.composeapplication.view.recipe.RecipeCard
+import com.example.composeapplication.view.ProfilePageNew
 import com.example.composeapplication.view.recipe.RecipeList
 import com.example.composeapplication.view.recipe.recipeList
 import com.example.composeapplication.view.recipe.sampleRecipe

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.composeapplication.R
-import com.example.composeapplication.data.model.Recipe
+import com.example.composeapplication.feature.recipe.domain.model.Recipe
 import com.example.composeapplication.ui.theme.PurpleGrey40
 
 @Composable
