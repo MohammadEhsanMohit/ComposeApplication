@@ -19,7 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composeapplication.common.mainActivityConstraintSet
 import com.example.composeapplication.data.BottomNavigationItem
-import com.example.composeapplication.feature.note.presentation.notes.NoteScreen
+import com.example.composeapplication.navigation.noteGraph
 import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 import com.example.composeapplication.view.ProfilePageNew
 import com.example.composeapplication.view.recipe.RecipeList
@@ -57,9 +57,7 @@ fun MainScreenView() {
             composable(BottomNavigationItem.Profile.screen_route) {
                 ProfilePageNew()
             }
-            composable(BottomNavigationItem.Note.screen_route) {
-                NoteScreen(navController = navController)
-            }
+            noteGraph(navController)
             composable(BottomNavigationItem.RecipeList.screen_route) {
                 RecipeList(recipes = recipeList)
             }

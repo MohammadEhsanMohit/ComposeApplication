@@ -11,18 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.example.composeapplication.data.BottomNavigationItem
+import com.example.composeapplication.data.BottomNavigationItem.Note
+import com.example.composeapplication.data.BottomNavigationItem.RecipeList
+import com.example.composeapplication.data.BottomNavigationItem.Profile
 import com.example.composeapplication.data.model.MenuItem
-import com.example.composeapplication.feature.note.presentation.add_edit_note.AddEditNoteScreen
-import com.example.composeapplication.feature.note.presentation.add_edit_note.AddEditNoteViewModel
-import com.example.composeapplication.feature.note.presentation.notes.NoteScreen
 import com.example.composeapplication.feature.note.presentation.util.Screen
-import com.example.composeapplication.utils.NotesNavLinkPARAM
+import com.example.composeapplication.navigation.RouteConstant.BOTTOM_PAGE_ROUTE
+import com.example.composeapplication.navigation.noteGraph
 import com.example.composeapplication.view.ProfilePage
 import com.example.composeapplication.view.ProfilePageNew
 import com.example.composeapplication.view.mainactivity.MainScreenView
@@ -32,8 +30,6 @@ import com.example.composeapplication.view.menu.DrawerHeader
 import com.example.composeapplication.view.recipe.RecipeList
 import com.example.composeapplication.view.recipe.recipeList
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.getViewModel
-import org.koin.core.parameter.parametersOf
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,8 +79,8 @@ fun BurgerMenuScreen() {
                     onItemClick = {
                         scope.launch { drawerState.close() }
                         when (it.id) {
-                            "Home" -> navController.navigate(BottomNavigationItem.Note.screen_route)
-                            "Setting" -> navController.navigate(BottomNavigationItem.RecipeList.screen_route)
+                            "Home" -> navController.navigate(Note.screen_route)
+                            "Setting" -> navController.navigate(RecipeList.screen_route)
                             "Note" -> navController.navigate(Screen.NotesScreen.route)
                             "Bottom" -> navController.navigate("BottomPage")
                         }
@@ -107,45 +103,19 @@ fun BurgerMenuScreen() {
             NavHost(
                 modifier = Modifier.padding(top = padding.calculateTopPadding()),
                 navController = navController,
-                startDestination = BottomNavigationItem.Note.screen_route
+                startDestination = Note.screen_route
             ) {
-                composable(route = Screen.NotesScreen.route) {
-                    NoteScreen(navController = navController)
-                }
-                composable(route = NotesNavLinkPARAM.NOTES_LIST_SCREEN_URL_PARAMETER,
-                    arguments =
-                    listOf(
-                        navArgument(name = "noteId") {
-                            type = NavType.IntType
-                            defaultValue = -1
-                        },
-                        navArgument(name = "noteColor") {
-                            type = NavType.IntType
-                            defaultValue = -1
-                        }
-                    )
-                ) {
-                    val color = it.arguments?.getInt("noteColor") ?: -1
-                    val noteId = it.arguments?.getInt("noteId") ?: -1
-                    val viewModel = getViewModel<AddEditNoteViewModel>(
-                        parameters = { parametersOf(noteId) }
-                    )
-                    AddEditNoteScreen(
-                        navController = navController,
-                        noteColor = color,
-                        viewModel = viewModel
-                    )
-                }
-                composable(BottomNavigationItem.Profile.screen_route) {
+                noteGraph(navController)
+                composable(Profile.screen_route) {
                     ProfilePage()
                 }
-                composable(BottomNavigationItem.Note.screen_route) {
+                composable(Note.screen_route) {
                     ProfilePageNew()
                 }
-                composable(BottomNavigationItem.RecipeList.screen_route) {
+                composable(RecipeList.screen_route) {
                     RecipeList(recipes = recipeList)
                 }
-                composable("BottomPage") {
+                composable(BOTTOM_PAGE_ROUTE) {
                     MainScreenView()
                 }
             }

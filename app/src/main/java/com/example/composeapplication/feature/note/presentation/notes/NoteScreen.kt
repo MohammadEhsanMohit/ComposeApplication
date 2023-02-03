@@ -19,10 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.compose.rememberNavController
 import com.example.composeapplication.R
 import com.example.composeapplication.feature.note.presentation.notes.components.NoteItem
 import com.example.composeapplication.feature.note.presentation.notes.components.OrderSection
 import com.example.composeapplication.feature.note.presentation.util.Screen
+import com.example.composeapplication.navigation.SplashToHomeRoute
 
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -36,6 +39,7 @@ fun NoteScreen(
 ) {
     val state = viewModel.state.value
     val scope = rememberCoroutineScope()
+
     val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
@@ -99,7 +103,7 @@ fun NoteScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                       navController.navigate(Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}",)
+                                navController.navigate(Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}",)
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
