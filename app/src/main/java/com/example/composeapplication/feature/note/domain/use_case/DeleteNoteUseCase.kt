@@ -4,9 +4,9 @@ import com.example.composeapplication.feature.note.domain.model.Note
 import com.example.composeapplication.feature.note.domain.repository.NoteRepository
 
 class DeleteNoteUseCase(
-    private val repository: com.example.composeapplication.feature.note.domain.repository.NoteRepository
+    private val repository: NoteRepository
 ) {
-    suspend operator fun invoke(note: com.example.composeapplication.feature.note.domain.model.Note) {
+    suspend operator fun invoke(note: Note) {
         repository.deleteNote(note)
     }
 }

@@ -1,15 +1,18 @@
 package com.example.composeapplication.feature.splash.presentation.splash
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.composeapplication.feature.splash.domain.user_case.CheckUserLogin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-class SplashScreenViewModel : ViewModel(){
+class SplashScreenViewModel(
+    private val useCase : CheckUserLogin
+) : ViewModel(){
 
     private val _progressState = mutableStateOf(0f)
     val progressState = _progressState
@@ -18,6 +21,7 @@ class SplashScreenViewModel : ViewModel(){
     val operationDone = _operationDone.asSharedFlow()
 
     init {
+
         viewModelScope.launch {
             for(i in 0..100) {
                 delay(1000)

@@ -6,21 +6,21 @@ import com.example.composeapplication.feature.note.domain.repository.NoteReposit
 import kotlinx.coroutines.flow.Flow
 
 class NoteRepositoryImpl(
-    private val dao: com.example.composeapplication.feature.note.data.data_source.NoteDao
-) : com.example.composeapplication.feature.note.domain.repository.NoteRepository {
-    override fun getNotes(): Flow<List<com.example.composeapplication.feature.note.domain.model.Note>> {
+    private val dao: NoteDao
+) : NoteRepository {
+    override fun getNotes(): Flow<List<Note>> {
         return dao.getNotes()
     }
 
-    override suspend fun getNoteById(id: Int): com.example.composeapplication.feature.note.domain.model.Note? {
+    override suspend fun getNoteById(id: Int): Note? {
         return dao.getNoteById(id)
     }
 
-    override suspend fun insertNote(note: com.example.composeapplication.feature.note.domain.model.Note) {
+    override suspend fun insertNote(note: Note) {
         dao.insertNote(note)
     }
 
-    override suspend fun deleteNote(note: com.example.composeapplication.feature.note.domain.model.Note) {
+    override suspend fun deleteNote(note: Note) {
         dao.deleteNote(note)
     }
 }

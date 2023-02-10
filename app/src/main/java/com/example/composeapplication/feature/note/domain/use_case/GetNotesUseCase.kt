@@ -4,12 +4,14 @@ import com.example.composeapplication.feature.note.domain.util.NoteOrder
 import com.example.composeapplication.feature.note.domain.util.OrderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import com.example.composeapplication.feature.note.domain.repository.NoteRepository
+import com.example.composeapplication.feature.note.domain.model.Note
 
 class GetNotesUseCase(
-    private val repository : com.example.composeapplication.feature.note.domain.repository.NoteRepository
+    private val repository : NoteRepository
 ) {
 
-    operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Ascending)) : Flow<List<com.example.composeapplication.feature.note.domain.model.Note>> {
+    operator fun invoke(noteOrder: NoteOrder = NoteOrder.Date(OrderType.Ascending)) : Flow<List<Note>> {
         return repository.getNotes().map { notes ->
 
             when(noteOrder.orderType) {

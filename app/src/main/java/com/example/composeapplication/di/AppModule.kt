@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val appModule = module {
     viewModel { NotesViewModel(get()) }
     viewModel { AddEditNoteViewModel(get(),get()) }
-    viewModel { SplashScreenViewModel() }
+    viewModel { SplashScreenViewModel(get()) }
 }

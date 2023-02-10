@@ -5,15 +5,15 @@ import com.example.composeapplication.feature.note.domain.model.Note
 import com.example.composeapplication.feature.note.domain.repository.NoteRepository
 
 class AddNote(
-    private val repository: com.example.composeapplication.feature.note.domain.repository.NoteRepository
+    private val repository: NoteRepository
 ) {
-    @Throws(com.example.composeapplication.feature.note.domain.model.InvalidNoteException::class)
-    suspend operator fun invoke(note: com.example.composeapplication.feature.note.domain.model.Note) {
+    @Throws(InvalidNoteException::class)
+    suspend operator fun invoke(note: Note) {
         if(note.title.isBlank()) {
-            throw com.example.composeapplication.feature.note.domain.model.InvalidNoteException("The Title of the note can't be empty")
+            throw InvalidNoteException("The Title of the note can't be empty")
         }
         if(note.content.isBlank()) {
-            throw com.example.composeapplication.feature.note.domain.model.InvalidNoteException("The Content of the note can't be empty")
+            throw InvalidNoteException("The Content of the note can't be empty")
         }
         repository.insertNote(note)
     }

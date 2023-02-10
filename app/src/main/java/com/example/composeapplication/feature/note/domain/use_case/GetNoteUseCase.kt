@@ -4,8 +4,8 @@ import com.example.composeapplication.feature.note.domain.model.Note
 import com.example.composeapplication.feature.note.domain.repository.NoteRepository
 
 class GetNoteUseCase(
-    private val repository: com.example.composeapplication.feature.note.domain.repository.NoteRepository
+    private val repository: NoteRepository
 ) {
 
-    suspend operator fun invoke(id:Int) : com.example.composeapplication.feature.note.domain.model.Note? = repository.getNoteById(id)
+    suspend operator fun invoke(id:Int) : Note? = repository.getNoteById(id)
 }
