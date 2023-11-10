@@ -5,6 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,12 +21,13 @@ import com.example.composeapplication.ui.theme.ComposeApplicationTheme
 
 class MainActivity : ComponentActivity() {
 
+    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val nav = rememberNavController()
             ComposeApplicationTheme {
-                Surface {
+                Surface(modifier = Modifier.semantics { testTagsAsResourceId=true }) {
                     NavHost(
                         navController = nav,
                         startDestination = SplashScreenRoute.route

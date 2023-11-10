@@ -24,7 +24,7 @@ class SplashScreenViewModel(
 
         viewModelScope.launch {
             for(i in 0..100) {
-                delay(1000)
+                //delay(500)
                 _progressState.value = _progressState.value + 0.1f
                 _operationDone.emit(_progressState.value)
             }

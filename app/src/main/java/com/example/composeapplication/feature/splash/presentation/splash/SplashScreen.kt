@@ -3,6 +3,7 @@ package com.example.composeapplication.feature.splash.presentation.splash
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -13,10 +14,14 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +31,7 @@ import com.example.composeapplication.ui.theme.Typography
 import kotlinx.coroutines.cancel
 import org.koin.androidx.compose.koinViewModel
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SplashScreenView(
     onLoadingDone :(()->Unit)? = null,
@@ -49,7 +55,7 @@ fun SplashScreenView(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .layoutId("splash")
+            .testTag("splash")
             .background(MaterialTheme.colorScheme.primary),
         verticalArrangement = Arrangement.Center
     ) {
@@ -57,13 +63,19 @@ fun SplashScreenView(
             painterResource(id = R.drawable.jet_pack_compose),
             contentDescription = "Logo",
             modifier = Modifier
+                .testTag("splash:logo")
                 .height(200.dp)
                 .align(Alignment.CenterHorizontally)
+                .clickable {
+                    onLoadingDone?.invoke()
+                }
         )
         Text(
             text = stringResource(id = R.string.app_name),
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .testTag("splash_text")
+                .fillMaxWidth(),
             style = Typography.titleLarge,
             color = MaterialTheme.colorScheme.onPrimary
         )
@@ -73,6 +85,7 @@ fun SplashScreenView(
             color = MaterialTheme.colorScheme.secondary,
             strokeWidth = 5.dp,
             modifier = Modifier
+                .testTag("splash_progress")
                 .align(Alignment.CenterHorizontally)
         )
     }

@@ -1,4 +1,4 @@
-package com.example.composeapplication.view.recipe
+package com.example.composeapplication.feature.recipe.presentation
 
 
 import androidx.compose.foundation.lazy.LazyColumn

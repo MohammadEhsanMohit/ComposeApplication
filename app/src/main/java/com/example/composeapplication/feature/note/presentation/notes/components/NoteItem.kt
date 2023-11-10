@@ -25,7 +25,7 @@ import com.example.composeapplication.feature.note.domain.model.Note
 
 @Composable
 fun NoteItem(
-    note: com.example.composeapplication.feature.note.domain.model.Note,
+    note: Note,
     modifier: Modifier,
     cornerRadius: Dp = 10.dp,
     cutCornerSize: Dp = 30.dp,

@@ -1,4 +1,4 @@
-package com.example.composeapplication.view.recipe
+package com.example.composeapplication.feature.recipe.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -72,5 +72,29 @@ val recipeList = listOf<Recipe>(
     Recipe(null,
         "https://www.uplooder.net/img/image/56/1c77105d06fbf84353e9b1f769229d74/meatball-black-bean-chilli-2-bf7378b.jpg",
         "Food 3",
+        listOf("Chicken","Noodles","Mushrooms","Soy Sauce")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/37/43b39fc8e1f965525b711a862fe8d0ef/1699568390870.JPEG",
+        "Food 4",
+        listOf("Chicken","Meat Noodles","Mushrooms","Soy Sauce")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/11/989517e2ebb84baade958484ca73cc0f/1699568390922.JPEG",
+        "Food 5",
+        listOf("Chicken","Vegetable Noodles","Mushrooms","Soy Sauce")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/92/12c8f970075e56864ae7f8dceb448d14/1699568390946.JPEG",
+        "Food 6",
+        listOf("Chicken","Noodles","Mushrooms","Chilli")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/52/b5de389c7805e93337e654d59a5327b1/1699568390973.JPEG",
+        "Food 7",
+        listOf("Chicken","Noodles","Mushrooms","Soy Sauce")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/26/7f823473f251f50b3d9936cbf446ba12/1699568391010.JPEG",
+        "Food 8",
+        listOf("Chicken","Noodles","Mushrooms","Soy Sauce")),
+    Recipe(null,
+        "https://www.uplooder.net/img/image/94/aed0a1d57af43a2cc48be68dc1c807d6/1699568391096.JPEG",
+        "Food 9",
         listOf("Chicken","Noodles","Mushrooms","Soy Sauce"))
 )

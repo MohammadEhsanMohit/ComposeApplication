@@ -27,8 +27,8 @@ import com.example.composeapplication.view.mainactivity.MainScreenView
 import com.example.composeapplication.view.menu.AppBar
 import com.example.composeapplication.view.menu.DrawerBody
 import com.example.composeapplication.view.menu.DrawerHeader
-import com.example.composeapplication.view.recipe.RecipeList
-import com.example.composeapplication.view.recipe.recipeList
+import com.example.composeapplication.feature.recipe.presentation.RecipeList
+import com.example.composeapplication.feature.recipe.presentation.recipeList
 import kotlinx.coroutines.launch
 
 

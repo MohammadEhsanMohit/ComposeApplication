@@ -8,11 +8,14 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.constraintlayout.compose.layoutId
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.composeapplication.data.BottomNavigationItem
-
+import org.koin.core.component.getScopeId
 
 @Composable
 fun BottomBar(navController: NavHostController) {
@@ -22,7 +25,10 @@ fun BottomBar(navController: NavHostController) {
         BottomNavigationItem.RecipeList
     )
 
-    BottomAppBar {
+    BottomAppBar(
+        modifier = Modifier
+            .testTag("bottom:Bar")
+    ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
         screens.forEach { item ->
@@ -40,7 +46,10 @@ fun BottomBar(navController: NavHostController) {
                 },
                 alwaysShowLabel = true,
                 icon = { Icon(painterResource(id = item.icon), contentDescription = item.title ,
-                    modifier = Modifier.width(IntrinsicSize.Min).height(IntrinsicSize.Min)) })
+                    modifier = Modifier
+                        .testTag("icon:${item.title}")
+                        .width(IntrinsicSize.Min)
+                        .height(IntrinsicSize.Min)) })
         }
 
     }
