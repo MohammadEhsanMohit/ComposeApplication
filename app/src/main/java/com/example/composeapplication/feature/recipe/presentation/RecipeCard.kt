@@ -9,11 +9,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.core.os.trace
+import androidx.tracing.Trace
 import com.example.composeapplication.feature.recipe.domain.model.Recipe
 import com.example.composeapplication.view.RecipeImage
+import androidx.tracing.trace
 
 @Composable
 fun RecipeCard(recipe: Recipe, padding: Dp) {
+    Trace.beginSection("RecipeCard.onDraw")
     Card(elevation = CardDefaults.cardElevation(8.dp),
         modifier = Modifier
             .padding(
@@ -26,6 +30,7 @@ fun RecipeCard(recipe: Recipe, padding: Dp) {
             ) {
         Column(Modifier.padding(16.dp)) {
             with(recipe) {
+
                 RecipeImage(this)
                 Text(text = title, modifier = Modifier
                     .fillMaxWidth()
@@ -43,6 +48,7 @@ fun RecipeCard(recipe: Recipe, padding: Dp) {
             }
         }
     }
+    Trace.endSection()
 }
 
 

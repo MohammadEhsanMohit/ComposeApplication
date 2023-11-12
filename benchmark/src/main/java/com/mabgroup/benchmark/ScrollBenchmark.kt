@@ -43,7 +43,7 @@ class ScrollBenchmark {
         benchmarkRule.measureRepeated(
             packageName = TARGET_PACKAGE,
             metrics = listOf(
-                TraceSectionMetric("ClickTrace"),
+                TraceSectionMetric("RecipeCard.onDraw"),
                 StartupTimingMetric(),
                 FrameTimingMetric()
             ),
